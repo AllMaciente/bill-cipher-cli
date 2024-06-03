@@ -1,0 +1,14 @@
+site_name: Bill Cipher Cli
+repo_url: https://github.com/AllMaciente/bill-cipher-cli
+repo_name: AllMaciente/bill-cipher-cli
+
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/logo.png
+
+markdown_extensions:
+  - attr_list
+
+extra_css:
+  - style/extra.css
