@@ -5,10 +5,14 @@ description = ""
 authors = ["Allmacdev <allmacdev@gmail.com>"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+bill_cipher ='bill_cipher_cli.main:app'
+
 [tool.poetry.dependencies]
 python = "^3.10"
 typer = {extras = ["all"], version = "^0.12.3"}
 mkdocs-material = "^9.5.25"
+mkdocstrings = {extras = ["python"], version = "^0.25.1"}
 
 
 [build-system]
