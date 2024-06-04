@@ -12,3 +12,9 @@ markdown_extensions:
 
 extra_css:
   - style/extra.css
+
+plugins:
+- mkdocstrings:
+    handlers:
+      python:
+        paths: [bill_cipher_cli]
