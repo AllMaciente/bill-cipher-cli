@@ -1,6 +1,9 @@
 from rich import print
 import typer
-from .utils import alfbet
+try:
+    from .utils import alfbet
+except:
+    from utils import alfbet
 """
     esse modulo comtem as funções para encriptar e decriptar o texto usando Cifra de Cesar.
 """
@@ -17,6 +20,9 @@ def coretion(text, space: bool = False):
 
     Examples:
         >>> Coretion('The quick brown fox jumps over the lazy dog')
+        'thequickbrownfoxjumpsoverthelazydog'
+
+        >>> Coretion('The quick brown fox jumps over the lazy dog',true)
         'thequickbrownfoxjumpsoverthelazydog'
     """
 
