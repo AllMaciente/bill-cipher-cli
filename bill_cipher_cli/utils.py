@@ -9,3 +9,11 @@ def fileRead(filepath):
 def fileWrite(filepath, content):
     with open(filepath, 'w') as f:
         f.write(content)
+
+
+def newFilePath(filepath, mode):
+    match mode:
+        case 'e':
+            return filepath.replace('.txt', '_Encrypted.txt')
+        case 'd':
+            return filepath.replace('.txt', '_Decrypted.txt')
