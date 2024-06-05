@@ -11,9 +11,19 @@ bill_cipher ='bill_cipher_cli.main:app'
 [tool.poetry.dependencies]
 python = "^3.10"
 typer = {extras = ["all"], version = "^0.12.3"}
-mkdocs-material = "^9.5.25"
-mkdocstrings = {extras = ["python"], version = "^0.25.1"}
 
+
+[tool.poetry.group.doc.dependencies]
+mkdocs = "^1.6.0"
+mkdocstrings = {extras = ["python"], version = "^0.25.1"}
+mkdocs-material = "^9.5.25"
+
+
+[tool.poetry.group.dev.dependencies]
+taskipy = "^1.12.2"
+
+[tool.taskipy.tasks]
+doc = {cmd='mkdocs serve',help='Run mkdocs server'}
 
 [build-system]
 requires = ["poetry-core"]
