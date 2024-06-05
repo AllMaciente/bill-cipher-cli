@@ -1,26 +1,30 @@
 from rich import print
 import typer
+from .utils import alfbet
+"""
+    esse modulo comtem as funções para encriptar e decriptar o texto usando Cifra de Cesar.
+"""
 
-alfbet = 'a b c d e f g h i j k l m n o p q r s t u v w x y z'.split()
 
 def coretion(text):
     """
     Converte o texto para minusculo, remove os espaços e troca os ç por c.
-    
+
     Parameters:
         text: o texto a ser convertido.
-    
+
     Examples:
         >>> Coretion('The quick brown fox jumps over the lazy dog')
         'thequickbrownfoxjumpsoverthelazydog'
     """
-    
+
     text = text.lower()
-    text = text.replace(' ','')
-    text = text.replace('ç','c')
+    text = text.replace(' ', '')
+    text = text.replace('ç', 'c')
     return text
 
-def encryption(text,key):
+
+def encryption(text, key):
     """
     Encripta o texto usando a chave de encriptação.
 
@@ -40,7 +44,8 @@ def encryption(text,key):
         textEnctypt += alfbet[ind]
     return textEnctypt
 
-def decryption(text,key):
+
+def decryption(text, key):
     """
     Decripta o texto usando a chave de encriptação.
 
@@ -60,7 +65,8 @@ def decryption(text,key):
         textDecypt += alfbet[ind]
     return textDecypt
 
-def CesarCipher(text,key,mode):
+
+def CesarCipher(text, key, mode):
     '''
     Encripta ou decripta o texto usando a chave de encriptação.
 
@@ -78,16 +84,15 @@ def CesarCipher(text,key,mode):
     '''
     match mode:
         case 'e':
-            return encryption(text,key)
+            return encryption(text, key)
         case 'd':
-            return decryption(text,key)
-
+            return decryption(text, key)
 
 
 if __name__ == '__main__':
     text = 'The quick brown fox jumps over the lazy dog'
     key = 3
-    encryp = CesarCipher(text,key,'e')
+    encryp = CesarCipher(text, key, 'e')
     print(encryp)
-    decryp = CesarCipher(encryp,key,'d')
-    print(decryp)   
+    decryp = CesarCipher(encryp, key, 'd')
+    print(decryp)
