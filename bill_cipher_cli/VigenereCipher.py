@@ -42,8 +42,25 @@ def encrpyt(text, key, space: bool = False):
     return result
 
 
-if __name__ == "__main__":
-    text = "atacar base Sul"
-    key = "LIMAO"
-    cripted = encrpyt(text, key)
-    print(cripted)
+def decrypt(text, key, space: bool = False):
+    key = keyMatcheLength(key, text)
+    result = ""
+    for n in range(len(text)):
+        if text[n] == " ":
+            result += " "
+        elif text[n] == "\n":
+            result += "\n"
+        else:
+            ikey = alfbet.index(key[n])
+            itxt = alfbet.index(text[n])
+            i = (itxt - ikey) % 26
+            result += alfbet[i]
+    return result
+
+
+def vigenere(text: str, key: str, mode, space: bool = False):
+    match mode:
+        case "e":
+            return encrpyt(text, key, space)
+        case "d":
+            return decrypt(text, key)
