@@ -12,6 +12,8 @@
         <link rel="prev" href="../..">
       
       
+        <link rel="next" href="../Vigen%C3%A8reCipher/">
+      
       
       <link rel="icon" href="../../assets/logo.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
@@ -295,15 +297,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#CesarCipher.coretion" class="md-nav__link">
-    <span class="md-ellipsis">
-      coretion
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#CesarCipher.decryption" class="md-nav__link">
     <span class="md-ellipsis">
       decryption
@@ -325,6 +318,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Vigen%C3%A8reCipher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VigenèreCipher
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -380,15 +394,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#CesarCipher.coretion" class="md-nav__link">
-    <span class="md-ellipsis">
-      coretion
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#CesarCipher.decryption" class="md-nav__link">
     <span class="md-ellipsis">
       decryption
@@ -425,6 +430,10 @@
 
 
   <h1>CesarCipher</h1>
+
+<p>esse modulo contem as funções para encriptar e decriptar o texto usando Cifra de Cesar.
+</p>
+
 
 <div class="doc doc-object doc-module">
 
@@ -473,6 +482,7 @@
           <tr class="doc-section-item">
             <td><code>text</code></td>
             <td>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -486,6 +496,7 @@
           <tr class="doc-section-item">
             <td><code>key</code></td>
             <td>
+                  <code>int</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -499,6 +510,7 @@
           <tr class="doc-section-item">
             <td><code>mode</code></td>
             <td>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -523,236 +535,7 @@
 
             <details class="quote">
               <summary>Source code in <code>bill_cipher_cli/CesarCipher.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">CesarCipher</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Encripta ou decripta o texto usando a chave de encriptação.</span>
-
-<span class="sd">    Parameters:</span>
-<span class="sd">        text: o texto a ser encriptado ou decriptado.</span>
-<span class="sd">        key: a chave de encriptação.</span>
-<span class="sd">        mode: o modo de encriptação ou decriptação.</span>
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; CesarCipher(&#39;thequickbrownfoxjumpsoverthelazydog&#39;,3,&#39;e&#39;)</span>
-<span class="sd">        &#39;wkhtxlfneurzqiramxpsvryhuwkhodcbgrj&#39;</span>
-
-<span class="sd">        &gt;&gt;&gt; CesarCipher(&#39;wkhtxlfneurzqiramxpsvryhuwkhodcbgrj&#39;,3,&#39;d&#39;)</span>
-<span class="sd">        &#39;thequickbrownfoxjumpsoverthelazydog&#39;</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">match</span> <span class="n">mode</span><span class="p">:</span>
-        <span class="k">case</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">encryption</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">space</span><span class="p">)</span>
-        <span class="k">case</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">decryption</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-        <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Mode must be e or d&#39;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="CesarCipher.coretion" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">coretion</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-      <p>Converte o texto para minusculo, remove os espaços e troca os ç por c.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>text</code></td>
-            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>o texto a ser convertido.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>space</code></td>
-            <td>
-                  <code>bool</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>se True, mantem os espaços.</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Coretion</span><span class="p">(</span><span class="s1">&#39;The quick brown fox jumps over the lazy dog&#39;</span><span class="p">)</span>
-<span class="go">&#39;thequickbrownfoxjumpsoverthelazydog&#39;</span>
-</code></pre></div>
-    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">Coretion</span><span class="p">(</span><span class="s1">&#39;The quick brown fox jumps over the lazy dog&#39;</span><span class="p">,</span><span class="n">true</span><span class="p">)</span>
-<span class="go">&#39;thequickbrownfoxjumpsoverthelazydog&#39;</span>
-</code></pre></div>
-
-            <details class="quote">
-              <summary>Source code in <code>bill_cipher_cli/CesarCipher.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">coretion</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Converte o texto para minusculo, remove os espaços e troca os ç por c.</span>
-
-<span class="sd">    Parameters:</span>
-<span class="sd">        text: o texto a ser convertido.</span>
-<span class="sd">        space: se True, mantem os espaços.</span>
-
-
-<span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; Coretion(&#39;The quick brown fox jumps over the lazy dog&#39;)</span>
-<span class="sd">        &#39;thequickbrownfoxjumpsoverthelazydog&#39;</span>
-
-<span class="sd">        &gt;&gt;&gt; Coretion(&#39;The quick brown fox jumps over the lazy dog&#39;,true)</span>
-<span class="sd">        &#39;thequickbrownfoxjumpsoverthelazydog&#39;</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">space</span><span class="p">:</span>
-        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;ç&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">text</span>
-</code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="CesarCipher.decryption" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">decryption</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></code>
-
-</h2>
-
-
-    <div class="doc doc-contents ">
-
-      <p>Decripta o texto usando a chave de encriptação.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>text</code></td>
-            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>o texto a ser encriptado.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>key</code></td>
-            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>a chave de encriptação.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">decryption</span><span class="p">(</span><span class="s1">&#39;wkhtxlfneurzqiramxpsvryhuwkhodcbgrj&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="go">&#39;thequickbrownfoxjumpsoverthelazydog&#39;</span>
-</code></pre></div>
-
-            <details class="quote">
-              <summary>Source code in <code>bill_cipher_cli/CesarCipher.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">65</span>
-<span class="normal">66</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
@@ -774,27 +557,143 @@
 <span class="normal">85</span>
 <span class="normal">86</span>
 <span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">decryption</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">CesarCipher</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Decripta o texto usando a chave de encriptação.</span>
+<span class="sd">    Encripta ou decripta o texto usando a chave de encriptação.</span>
 
 <span class="sd">    Parameters:</span>
-<span class="sd">        text: o texto a ser encriptado.</span>
+<span class="sd">        text: o texto a ser encriptado ou decriptado.</span>
 <span class="sd">        key: a chave de encriptação.</span>
+<span class="sd">        mode: o modo de encriptação ou decriptação.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; CesarCipher(&#39;thequickbrownfoxjumpsoverthelazydog&#39;,3,&#39;e&#39;)</span>
+<span class="sd">        &#39;wkhtxlfneurzqiramxpsvryhuwkhodcbgrj&#39;</span>
+
+<span class="sd">        &gt;&gt;&gt; CesarCipher(&#39;wkhtxlfneurzqiramxpsvryhuwkhodcbgrj&#39;,3,&#39;d&#39;)</span>
+<span class="sd">        &#39;thequickbrownfoxjumpsoverthelazydog&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">match</span> <span class="n">mode</span><span class="p">:</span>
+        <span class="k">case</span> <span class="s2">&quot;e&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">encryption</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">space</span><span class="p">)</span>
+        <span class="k">case</span> <span class="s2">&quot;d&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">decryption</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mode must be e or d&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="CesarCipher.decryption" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">decryption</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Decripta o texto usando a chave de decriptação.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>text</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>o texto a ser decriptado.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>key</code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>a chave de decriptação.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">decryption</span><span class="p">(</span><span class="s1">&#39;wkhtxlfneurzqiramxpsvryhuwkhodcbgrj&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">&#39;thequickbrownfoxjumpsoverthelazydog&#39;</span>
+</code></pre></div>
+
+            <details class="quote">
+              <summary>Source code in <code>bill_cipher_cli/CesarCipher.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">decryption</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decripta o texto usando a chave de decriptação.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        text: o texto a ser decriptado.</span>
+<span class="sd">        key: a chave de decriptação.</span>
 
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; decryption(&#39;wkhtxlfneurzqiramxpsvryhuwkhodcbgrj&#39;,3)</span>
 <span class="sd">        &#39;thequickbrownfoxjumpsoverthelazydog&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">textDecypt</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">textDecypt</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
-            <span class="n">textDecypt</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+            <span class="n">textDecypt</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span>
             <span class="k">continue</span>
-        <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
-            <span class="n">textDecypt</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">:</span>
+            <span class="n">textDecypt</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
             <span class="k">continue</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="n">alfbet</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">ind</span> <span class="o">-</span> <span class="n">key</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span>
@@ -834,6 +733,7 @@
           <tr class="doc-section-item">
             <td><code>text</code></td>
             <td>
+                  <code>str</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -847,6 +747,7 @@
           <tr class="doc-section-item">
             <td><code>key</code></td>
             <td>
+                  <code>int</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -882,33 +783,33 @@
 
             <details class="quote">
               <summary>Source code in <code>bill_cipher_cli/CesarCipher.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">encryption</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">encryption</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Encripta o texto usando a chave de encriptação.</span>
 
@@ -923,13 +824,13 @@
 <span class="sd">        &#39;wkhtxlfneurzqiramxpsvryhuwkhodcbgrj&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">coretion</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">space</span><span class="p">)</span>
-    <span class="n">textEnctypt</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">textEnctypt</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
-            <span class="n">textEnctypt</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+            <span class="n">textEnctypt</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span>
             <span class="k">continue</span>
-        <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">:</span>
-            <span class="n">textEnctypt</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="k">if</span> <span class="n">letter</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">:</span>
+            <span class="n">textEnctypt</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
             <span class="k">continue</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="n">alfbet</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
         <span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">ind</span> <span class="o">+</span> <span class="n">key</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span>
