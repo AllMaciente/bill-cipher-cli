@@ -5,12 +5,9 @@ try:
     from .utils import alfbet, coretion
 except:
     from utils import alfbet, coretion
-"""
-    esse modulo comtem as funções para encriptar e decriptar o texto usando Cifra de Cesar.
-"""
 
 
-def encryption(text, key, space: bool = False):
+def encryption(text: str, key: int, space: bool = False):
     """
     Encripta o texto usando a chave de encriptação.
 
@@ -39,13 +36,13 @@ def encryption(text, key, space: bool = False):
     return textEnctypt
 
 
-def decryption(text, key):
+def decryption(text: str, key: int):
     """
-    Decripta o texto usando a chave de encriptação.
+    Decripta o texto usando a chave de decriptação.
 
     Parameters:
-        text: o texto a ser encriptado.
-        key: a chave de encriptação.
+        text: o texto a ser decriptado.
+        key: a chave de decriptação.
 
 
     Examples:
@@ -66,7 +63,7 @@ def decryption(text, key):
     return textDecypt
 
 
-def CesarCipher(text, key, mode, space: bool = False):
+def CesarCipher(text: str, key: int, mode: str, space: bool = False):
     """
     Encripta ou decripta o texto usando a chave de encriptação.
 
