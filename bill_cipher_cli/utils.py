@@ -26,16 +26,25 @@ def coretion(text, space: bool = False):
 
 
 def fileRead(filepath):
+    """
+    Ler as informaçoes de um aquivo txt
+    """
     with open(filepath, "r") as f:
         return f.read()
 
 
 def fileWrite(filepath, content):
+    """
+    Escrever as informaçoes em um aquivo txt
+    """
     with open(filepath, "w") as f:
         f.write(content)
 
 
 def newFilePath(filepath, mode):
+    """
+    gera o novo caminho do arquivo depois de ser criptografado ou decriptado
+    """
     match mode:
         case "e":
             return filepath.replace(".txt", "_Encrypted.txt")
