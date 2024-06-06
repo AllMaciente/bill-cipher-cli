@@ -1,36 +1,13 @@
-from rich import print
 import typer
+from rich import print
+
 try:
-    from .utils import alfbet
+    from .utils import alfbet, coretion
 except:
-    from utils import alfbet
+    from utils import alfbet, coretion
 """
     esse modulo comtem as funções para encriptar e decriptar o texto usando Cifra de Cesar.
 """
-
-
-def coretion(text, space: bool = False):
-    """
-    Converte o texto para minusculo, remove os espaços e troca os ç por c.
-
-    Parameters:
-        text: o texto a ser convertido.
-        space: se True, mantem os espaços.
-
-
-    Examples:
-        >>> Coretion('The quick brown fox jumps over the lazy dog')
-        'thequickbrownfoxjumpsoverthelazydog'
-
-        >>> Coretion('The quick brown fox jumps over the lazy dog',true)
-        'thequickbrownfoxjumpsoverthelazydog'
-    """
-
-    text = text.lower()
-    if not space:
-        text = text.replace(' ', '')
-    text = text.replace('ç', 'c')
-    return text
 
 
 def encryption(text, key, space: bool = False):
@@ -48,13 +25,13 @@ def encryption(text, key, space: bool = False):
         'wkhtxlfneurzqiramxpsvryhuwkhodcbgrj'
     """
     text = coretion(text, space)
-    textEnctypt = ''
+    textEnctypt = ""
     for letter in text:
-        if letter == ' ':
-            textEnctypt += ' '
+        if letter == " ":
+            textEnctypt += " "
             continue
-        if letter == '\n':
-            textEnctypt += '\n'
+        if letter == "\n":
+            textEnctypt += "\n"
             continue
         ind = alfbet.index(letter)
         ind = (ind + key) % 26
@@ -75,13 +52,13 @@ def decryption(text, key):
         >>> decryption('wkhtxlfneurzqiramxpsvryhuwkhodcbgrj',3)
         'thequickbrownfoxjumpsoverthelazydog'
     """
-    textDecypt = ''
+    textDecypt = ""
     for letter in text:
-        if letter == ' ':
-            textDecypt += ' '
+        if letter == " ":
+            textDecypt += " "
             continue
-        if letter == '\n':
-            textDecypt += '\n'
+        if letter == "\n":
+            textDecypt += "\n"
             continue
         ind = alfbet.index(letter)
         ind = (ind - key) % 26
@@ -90,7 +67,7 @@ def decryption(text, key):
 
 
 def CesarCipher(text, key, mode, space: bool = False):
-    '''
+    """
     Encripta ou decripta o texto usando a chave de encriptação.
 
     Parameters:
@@ -104,20 +81,20 @@ def CesarCipher(text, key, mode, space: bool = False):
 
         >>> CesarCipher('wkhtxlfneurzqiramxpsvryhuwkhodcbgrj',3,'d')
         'thequickbrownfoxjumpsoverthelazydog'
-    '''
+    """
     match mode:
-        case 'e':
+        case "e":
             return encryption(text, key, space)
-        case 'd':
+        case "d":
             return decryption(text, key)
         case _:
-            raise ValueError('Mode must be e or d')
+            raise ValueError("Mode must be e or d")
 
 
-if __name__ == '__main__':
-    text = 'The quick brown fox jumps over the lazy dog'
+if __name__ == "__main__":
+    text = "The quick brown fox jumps over the lazy dog"
     key = 3
-    encryp = CesarCipher(text, key, 'e')
+    encryp = CesarCipher(text, key, "e")
     print(encryp)
-    decryp = CesarCipher(encryp, key, 'd')
+    decryp = CesarCipher(encryp, key, "d")
     print(decryp)
